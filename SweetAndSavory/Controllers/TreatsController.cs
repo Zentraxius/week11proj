@@ -13,31 +13,19 @@ using System.Threading.Tasks;
 
 namespace SweetAndSavory.Controllers
 {
-  
   public class TreatsController : Controller
   {
     private readonly SweetAndSavoryContext _db;
     private readonly UserManager<AppUser> _userManager;
-
     public TreatsController(UserManager<AppUser> userManager, SweetAndSavoryContext db)
     {
       _userManager = userManager;
       _db = db;
     }
-
     public ActionResult Index()
     {
       List<Treat> model = _db.Treats.ToList();
       return View();
-    }
-    
-    public ActionResult Details(int id)
-    {
-      var thisTreat = _db.Treats
-        .Include(treat => treat.Flavors)
-        .ThenInclude(join => join.Flavor)
-        .FirstOrDefault(treat => treat.TreatId == id);
-      return View(thisTreat);
     }
   }
 }
