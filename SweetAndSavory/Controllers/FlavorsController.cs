@@ -53,7 +53,6 @@ namespace SweetAndSavory.Controllers
       .Include(flavor => flavor.Treats)
       .ThenInclude(join => join.Treat)
       .FirstOrDefault(flavors => flavors.FlavorId == id);
-      // ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
       return View(thisFlavor);
     }
 
