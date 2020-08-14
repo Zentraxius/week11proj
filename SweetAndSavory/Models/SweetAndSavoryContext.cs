@@ -4,7 +4,7 @@ using SweetAndSavory.Models;
 
 namespace SweetAndSavory.Models
 {
-  public class SweetAndSavoryContext : IdentityDbContext<Flavor>
+  public class SweetAndSavoryContext : IdentityDbContext<AppUser>
   {
     // public virtural DbSet<Tag> Tags { get; set; }
     public DbSet<Flavor> Flavors { get; set; }
