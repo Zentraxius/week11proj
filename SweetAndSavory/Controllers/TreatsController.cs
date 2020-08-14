@@ -1,23 +1,23 @@
-using System.Collections.Generic;
-using System;
-using Microsoft.AspNetCore.Mvc;
-using SweetAndSavory.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using SweetAndSavory.Models;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Security.Claims;
-using SweetAndSavory.ViewModels;
-
+using System.Threading.Tasks;
 
 namespace SweetAndSavory.Controllers
 {
+  
   public class TreatsController : Controller
   {
     private readonly SweetAndSavoryContext _db;
-    private readonly UserManager<Treat> _userManager;
+    private readonly UserManager<AppUser> _userManager;
 
     public TreatsController(UserManager<AppUser> userManager, SweetAndSavoryContext db)
     {
@@ -27,9 +27,10 @@ namespace SweetAndSavory.Controllers
 
     public ActionResult Index()
     {
-      List<Treat> model = _db.Engineers.ToList();
+      List<Treat> model = _db.Treats.ToList();
       return View();
     }
+    
     public ActionResult Details(int id)
     {
       var thisTreat = _db.Treats
