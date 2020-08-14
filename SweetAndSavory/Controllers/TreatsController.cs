@@ -18,9 +18,8 @@ namespace SweetAndSavory.Controllers
   {
     private readonly SweetAndSavoryContext _db;
     private readonly UserManager<Treat> _userManager;
-    private readonly SignInManager<Treat> _signInManager;
 
-    public TreatsController(UserManager<Treat> userManager, SignInManager<Treat> signInManager, SweetAndSavoryContext db)
+    public TreatsController(UserManager<AppUser> userManager, SweetAndSavoryContext db)
     {
       _userManager = userManager;
       _signInManager = signInManager;
