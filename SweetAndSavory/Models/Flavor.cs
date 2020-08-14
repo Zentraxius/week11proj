@@ -8,7 +8,6 @@ namespace SweetAndSavory.Models
     {
       this.Treats = new HashSet<TreatFlavor>();
     }
-
     public int FlavorId { get; set; }
     public string Name { get; set; }
     public ICollection<TreatFlavor> Treats { get; set; }
