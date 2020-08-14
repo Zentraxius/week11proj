@@ -14,23 +14,19 @@ namespace SweetAndSavory.Controllers
   public class FlavorsController : Controller
   {
     private readonly SweetAndSavoryContext _db;
-
     public FlavorsController(SweetAndSavoryContext db)
     {
       _db = db;
     }
-
     public ActionResult Index()
     {
       List<Flavor> model = _db.Flavors.ToList();
       return View(model);
     }
-
     public ActionResult Create()
     {
       return View();
     }
-
     [HttpPost]
     public ActionResult Create(Flavor flavor)
     {
@@ -38,6 +34,7 @@ namespace SweetAndSavory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+    [Authorize]
     public ActionResult Details(int id)
     {
       var thisFlavor = _db.Flavors
@@ -46,7 +43,6 @@ namespace SweetAndSavory.Controllers
         .FirstOrDefault(flavors => flavors.FlavorId == id);
       return View(thisFlavor);
     }
-
     public ActionResult AddTreat(int id)
     {
       var thisFlavor = _db.Flavors
@@ -55,7 +51,6 @@ namespace SweetAndSavory.Controllers
       .FirstOrDefault(flavors => flavors.FlavorId == id);
       return View(thisFlavor);
     }
-
     [HttpPost]
     public ActionResult AddTreat(Flavor flavor)
     {
@@ -67,7 +62,6 @@ namespace SweetAndSavory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
     [HttpPost]
     public ActionResult DeleteTreat()
     {
@@ -76,6 +70,18 @@ namespace SweetAndSavory.Controllers
       _db.TreatFlavor.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
+    }
+    [HttpPost]
+    public ActionResult Edit(Flavor flavor)
+    {
+      _db.Entry(flavor).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+    public ActionResult edit(int id)
+    {
+      var thisFlavor = _db.Flavors
+      .Include(Flavor => Flavor.Treats)
     }
   }
 }
