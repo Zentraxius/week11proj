@@ -16,8 +16,8 @@ namespace SweetAndSavory.Controllers
   public class TreatsController : Controller
   {
     private readonly SweetAndSavoryContext _db;
-    private readonly UserManager<AppUser> _userManager;
-    public TreatsController(UserManager<AppUser> userManager, SweetAndSavoryContext db)
+    private readonly UserManager<ApplicationUser> _userManager;
+    public TreatsController(UserManager<ApplicationUser> userManager, SweetAndSavoryContext db)
     {
       _userManager = userManager;
       _db = db;
@@ -98,7 +98,7 @@ namespace SweetAndSavory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-    
+
     [Authorize]
     public ActionResult AddFlavor(int id)
     {

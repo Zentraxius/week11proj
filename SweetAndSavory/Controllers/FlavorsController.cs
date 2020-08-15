@@ -43,7 +43,6 @@ namespace SweetAndSavory.Controllers
         .FirstOrDefault(flavors => flavors.FlavorId == id);
       return View(thisFlavor);
     }
-    ////////////////
     [HttpPost]
     public ActionResult Edit(Flavor flavor)
     {
@@ -51,7 +50,7 @@ namespace SweetAndSavory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-    public ActionResult edit(int id)
+    public ActionResult Edit(int id)
     {
       var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
       return View(thisFlavor);

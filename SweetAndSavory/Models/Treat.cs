@@ -8,10 +8,10 @@ namespace SweetAndSavory.Models
     {
       this.Flavors = new HashSet<TreatFlavor>();
     }
-    public int TreatId {get; set;}
-    public int FlavorId {get; set;}
-    public virtual AppUser User {get;set;}
-    public string Name {get; set;}
-    public ICollection<TreatFlavor> Flavors {get;}
+    public int TreatId { get; set; }
+    public int FlavorId { get; set; }
+    public virtual ApplicationUser User { get; set; }
+    public string Name { get; set; }
+    public ICollection<TreatFlavor> Flavors { get; }
   }
 }

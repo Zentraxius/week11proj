@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace SweetAndSavory.Models
 {
-  public class AppUser : IdentityUser
+  public class ApplicationUser : IdentityUser
   {
-    public string Name {get; set;}
+    public string Name { get; set; }
   }
 }
