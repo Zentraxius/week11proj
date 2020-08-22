@@ -2,11 +2,9 @@
   Layout = "_Layout";
 }
 
-@model SweetAndSavory.Models
+@model SweetAndSavory.Models.Flavor
 
 <h2>Do you want to delete this?</h2>
-
-@Html.ActionLink("No", "Index")
 
 <h3>@Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(model => model.Name)</h3>
 
@@ -14,3 +12,4 @@
 {
   <input type="submit" value="Delete" class="btn"/>
 }
+@Html.ActionLink("Back to flavors", "Index")
