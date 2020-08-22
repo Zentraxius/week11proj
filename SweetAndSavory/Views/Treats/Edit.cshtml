@@ -2,23 +2,20 @@
   Layout = "_Layout";
 }
 
-@model Factory.Models.Machine
+@model SweetAndSavory.Models.Treat
 
 <h2>Edit</h2>
 
-<h4>Edit this machine: @Html.DisplayFor(model => model.Purpose)</h4>
+<h4>Edit this Treat: @Html.DisplayFor(model => model.Name)</h4>
 
 @using (Html.BeginForm())
 {
-    @Html.HiddenFor(model => model.MachineId)
-
-    @Html.LabelFor(model => model.Purpose)
-    @Html.EditorFor(model => model.Purpose)
-
-    @Html.Label("Select Engineer")
-    @Html.DropDownList("EngineerId")
-
-    <input type="submit" value="Save" />
+    @Html.HiddenFor(model => model.TreatId)
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+    @Html.Label("Select Treat")
+    @Html.DropDownList("TreatId")
+    <input type="submit" value="Save"/>
 }
 
-<p>@Html.ActionLink("Back to machine list", "Index")</p>
+<p>@Html.ActionLink("Back to Treat list", "Index")</p>
