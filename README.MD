@@ -37,24 +37,8 @@ A website specially made for Pierre to help manage his products flavors!
 
 # Database Instructions
 
-DROP DATABASE IF EXISTS `FirstName_LastName`;
-CREATE DATABASE `FirstName_LastName`;
-
-USE `FirstName_LastName`;
-
-CREATE TABLE `Flavors` (
-`FlavorId` int(11) NOT NULL AUTO_INCREMENT,
-`Description` varchar(255) DEFAULT NULL,
-`Treat` int(11) NOT NULL AUTO_INCREMENT,
-PRIMARY KEY (`FlavorId`)
-CONSTRAINT `FK_Flavors_Treats_Treat` FOREIGN KEY (`Treat`) REFERENCES `Treats` (`Treat`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `Treats` (
-`Treat` int(11) NOT NULL AUTO_INCREMENT,
-`Description` varchar(255) DEFAULT NULL,
-PRIMARY KEY (`Treat`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP DATABASE IF EXISTS `Cody_Fritz`;
+In MySqlWorkbench
 
 ## Importing the provided Database
 
@@ -65,6 +49,13 @@ PRIMARY KEY (`Treat`)
 4. From the "Navigator" tab, and the "Administration" sub-tab, we will click on Data Import/Restore
 5. Select Import from Self-Contained-File and navigate to the desktop, select the file cody_fritz.sql.
 6. Select Start Import.
+
+## Making your own Database
+0. These instructions are assuming you have already downloaded the project and can open it in a proper editor such as VisualStudioCode
+1. In the terminal type `dotnet ef migrations add {name}` It is standard practice to do "Initial" as the first, which has already been done. 
+2. In this example, `dotnet ef migrations add CodeReview` as this has not been used yet
+3. Now, you can run `dotnet ef database update` to automatically update and create the database to your MySqlWorkbench.
+4. The database is named `cody_fritz` by default, this can be changed in the appsettings.json as mentioned above. 
 
 ## Specs
 

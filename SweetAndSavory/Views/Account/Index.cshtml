@@ -1,11 +1,13 @@
 @{
   Layout = "_Layout";
 }
-
+@using SweetAndSavory.Controllers
 @using System.Security.Claims
 
-<h2>Authentication with Identity</h2>
+<h2>Login to Pierres Sweet and Savory to manage your business!</h2>
 <hr />
+
+
 @if (User.Identity.IsAuthenticated)
 {
     <p>Hello @User.Identity.Name!</p>
@@ -14,8 +16,12 @@
         <input type="submit" class="btn btn-default" value="Log out" />
     }
 }
+
+
 else
 {
+    <form action="Account/Login" method="get">
+    <button type="submit" class="btn">Login below or register today to manage your website!</button></form>
     <p>@Html.ActionLink("Register", "Register")</p>
     <p>@Html.ActionLink("Log in", "Login")</p>
 }

@@ -17,14 +17,6 @@ else
   @foreach(var join in Model.Flavors)
   {
     <p>@join.Flavor.Name</p>
-    @if (User.Identity.IsAuthenticated && ViewBag.IsCurrentUser)
-    {
-      @using (Html.BeginForm("DeleteFlavor", "Treats"))
-      {
-  
-        <p>@Html.Hidden("joinId", @join.TreatFlavorId) <input type="submit" value="Remove Flavor" class="btn"/></p>
-   }
-    }
   }
 }
 <hr />

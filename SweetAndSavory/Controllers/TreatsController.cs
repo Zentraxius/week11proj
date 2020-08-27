@@ -22,10 +22,11 @@ namespace SweetAndSavory.Controllers
       _userManager = userManager;
       _db = db;
     }
+
     public ActionResult Index()
     {
       List<Treat> model = _db.Treats.ToList();
-      return View();
+      return View(model);
     }
 
     [Authorize]
